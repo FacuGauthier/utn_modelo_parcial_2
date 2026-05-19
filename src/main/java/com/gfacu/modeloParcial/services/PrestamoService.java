@@ -16,6 +16,7 @@ import java.util.List;
 @Service
 public class PrestamoService {
     private final PrestamoRepository prestamoRepository;
+    private final UsuarioRepository usuarioRepository;
     private final LibroRepository libroRepository;
 
     public PrestamoService(PrestamoRepository prestamoRepository, UsuarioRepository usuarioRepository , LibroRepository libroRepository) {
