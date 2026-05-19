@@ -34,9 +34,7 @@ public class PrestamoService {
 
         if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())) throw new PrestamoInvalidoException("La fecha de devolucion debe ser posterior a la actual.");
 
-        if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())) {
-            throw new PrestamoInvalidoException("La fecha de devolucion debe ser posterior a la actual.");
-        }
+        libro.setCantidadDisponible(libro.getCantidadDisponible() - 1);
 
         try{
             prestamo.setId(null);
