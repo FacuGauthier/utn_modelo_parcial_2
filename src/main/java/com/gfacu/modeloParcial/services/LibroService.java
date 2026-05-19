@@ -70,6 +70,10 @@ public class LibroService {
                 .orElseThrow(() -> new IllegalArgumentException("El libro no existe."));
     }
 
+    public List<Libro> listarLibrosPorCategoria(String categoria) {
+        return listarLibros().stream().filter(lib -> lib.getCategoria().equals(categoria)).toList();
+    }
+
     public List<Libro> listarLibros() {
         return libroRepository.findAll();
     }

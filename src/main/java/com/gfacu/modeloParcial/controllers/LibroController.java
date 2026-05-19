@@ -22,6 +22,11 @@ public class LibroController {
         return libroService.listarLibros();
     }
 
+    @GetMapping("/listar/{categoria}")
+    public List<Libro> listarLibrosPorCategoria(@PathVariable String categoria) {
+        return libroService.listarLibrosPorCategoria(categoria);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Libro> buscarPorId(@PathVariable Long id) {
         Libro libro = libroService.buscarPorId(id);
