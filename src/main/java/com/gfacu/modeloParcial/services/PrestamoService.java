@@ -6,6 +6,7 @@ import com.gfacu.modeloParcial.models.Libro;
 import com.gfacu.modeloParcial.models.Prestamo;
 import com.gfacu.modeloParcial.repositories.LibroRepository;
 import com.gfacu.modeloParcial.repositories.PrestamoRepository;
+import com.gfacu.modeloParcial.repositories.UsuarioRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
