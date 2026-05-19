@@ -10,4 +10,5 @@ import java.util.List;
 public interface PrestamoRepository extends JpaRepository<Prestamo,Long> {
     boolean existsByUsuarioId(Long idUsuario);
     boolean existsByLibroId(Long idLibro);
+    List<Prestamo> findByUsuarioId(Long idUsuario);
 }

@@ -6,22 +6,20 @@ import com.gfacu.modeloParcial.models.Libro;
 import com.gfacu.modeloParcial.models.Prestamo;
 import com.gfacu.modeloParcial.repositories.LibroRepository;
 import com.gfacu.modeloParcial.repositories.PrestamoRepository;
-import com.gfacu.modeloParcial.repositories.UsuarioRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PrestamoService {
     private final PrestamoRepository prestamoRepository;
-    private final UsuarioRepository usuarioRepository;
     private final LibroRepository libroRepository;
 
-    public PrestamoService(PrestamoRepository prestamoRepository, UsuarioRepository usuarioRepository, LibroRepository libroRepository) {
+    public PrestamoService(PrestamoRepository prestamoRepository, LibroRepository libroRepository) {
         this.prestamoRepository = prestamoRepository;
-        this.usuarioRepository = usuarioRepository;
         this.libroRepository = libroRepository;
     }
 
@@ -65,7 +63,23 @@ public class PrestamoService {
     }
 
     public List<Prestamo> listarPorUsuario(Long idUsuario) {
+        if(idUsuario == null) {
+            throw new IllegalArgumentException("El ID no puede ser nulo.");
+        }
 
+        return prestamoRepository.findByUsuarioId(idUsuario);
+    }
+
+    public List<Prestamo> listarPrestamosVencidos() {
+        List<Prestamo> prestamos = new ArrayList<>();
+
+        for(Prestamo prestamo : prestamoRepository.findAll()) {
+            if(prestamo.getEstado() == Estado.ACTIVO && prestamo.getFechaDevolucion().isBefore(LocalDate.now())) {
+                prestamos.add(prestamo);
+            }
+        }
+
+        return prestamos;
     }
 
     public Prestamo buscarPorId(Long id) {
