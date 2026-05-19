@@ -46,20 +46,24 @@ public class PrestamoService {
         }
     }
 
-    public boolean finalizarPrestamo(Long id) {
+    public void finalizarPrestamo(Long id) {
         Prestamo prestamo = buscarPorId(id);
 
         prestamo.setEstado(Estado.FINALIZADO);
 
         Libro libro = prestamo.getLibro();
         libro.setCantidadDisponible(libro.getCantidadDisponible()+1);
+
         try{
             libroRepository.save(libro);
             prestamoRepository.save(prestamo);
-            return true;
         } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("Error en la integridad de datos.");
         }
+    }
+
+    public List<Prestamo> listarPrestamos() {
+        return prestamoRepository.findAll();
     }
 
     public List<Prestamo> listarPorUsuario(Long idUsuario) {
