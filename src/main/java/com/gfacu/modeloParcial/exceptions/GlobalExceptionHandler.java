@@ -1,0 +1,24 @@
+package com.gfacu.modeloParcial.exceptions;
+
+import com.gfacu.modeloParcial.models.Prestamo;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> manejarIllegalArgument(IllegalArgumentException ex) {
+        return ResponseEntity
+                .badRequest()
+                .body(ex.getMessage());
+    }
+
+    @ExceptionHandler(PrestamoInvalidoException.class)
+    public ResponseEntity<String> manejarPrestamoInvalido(PrestamoInvalidoException ex) {
+        return ResponseEntity
+                .badRequest()
+                .body(ex.getMessage());
+    }
+}
