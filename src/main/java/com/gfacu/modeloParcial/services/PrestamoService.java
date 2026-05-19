@@ -18,7 +18,7 @@ public class PrestamoService {
     private final PrestamoRepository prestamoRepository;
     private final LibroRepository libroRepository;
 
-    public PrestamoService(PrestamoRepository prestamoRepository, LibroRepository libroRepository) {
+    public PrestamoService(PrestamoRepository prestamoRepository, UsuarioRepository usuarioRepository , LibroRepository libroRepository) {
         this.prestamoRepository = prestamoRepository;
         this.libroRepository = libroRepository;
     }
