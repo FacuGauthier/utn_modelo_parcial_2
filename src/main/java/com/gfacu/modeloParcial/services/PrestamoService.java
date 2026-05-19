@@ -32,9 +32,7 @@ public class PrestamoService {
 
         if(libro.getCantidadDisponible() < 1) throw new PrestamoInvalidoException("Sin stock");
 
-        if(prestamo.getLibro().getCantidadDisponible() < 1) {
-            throw new PrestamoInvalidoException("No hay cantidades suficientes.");
-        }
+        if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())) throw new PrestamoInvalidoException("La fecha de devolucion debe ser posterior a la actual.");
 
         if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())) {
             throw new PrestamoInvalidoException("La fecha de devolucion debe ser posterior a la actual.");
