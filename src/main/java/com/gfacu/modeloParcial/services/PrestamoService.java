@@ -49,6 +49,8 @@ public class PrestamoService {
     public void finalizarPrestamo(Long id) {
         Prestamo prestamo = buscarPorId(id);
 
+        if(prestamo.getEstado() == Estado.FINALIZADO) throw new PrestamoInvalidoException("El prestamo ya esta finalizado.");
+
         prestamo.setEstado(Estado.FINALIZADO);
 
         Libro libro = prestamo.getLibro();
