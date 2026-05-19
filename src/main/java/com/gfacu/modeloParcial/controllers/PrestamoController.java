@@ -48,7 +48,7 @@ public class PrestamoController {
                 .body(prestamoCreado);
     }
 
-    @DeleteMapping("/{id}")
+    @PatchMapping("/{id}/finalizar")
     public ResponseEntity<Prestamo> finalizarPrestamo(@PathVariable Long id) {
         prestamoService.finalizarPrestamo(id);
         return ResponseEntity.noContent().build();
