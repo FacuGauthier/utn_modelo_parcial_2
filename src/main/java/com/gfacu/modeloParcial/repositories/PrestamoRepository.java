@@ -8,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PrestamoRepository extends JpaRepository<Prestamo,Long> {
-    boolean existsByUsuarioId(Long idUsuario);
-    boolean existsByLibroId(Long idLibro);
     List<Prestamo> findByUsuarioId(Long idUsuario);
 }
