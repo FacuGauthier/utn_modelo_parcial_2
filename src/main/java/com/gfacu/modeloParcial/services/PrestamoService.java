@@ -27,8 +27,8 @@ public class PrestamoService {
     }
 
     public Prestamo registrarPrestamo(Prestamo prestamo) {
-        boolean usuario = usuarioRepository.existsById(prestamo.getUsuario().getId());
-        boolean libro = libroRepository.existsById(prestamo.getLibro().getId());
+        Usuario usuario = usuarioRepository.findById(prestamo.getUsuario().getId()).orElseThrow(() -> new PrestamoInvalidoException("Usuario no encontrado"));
+        Libro libro = libroRepository.findById(prestamo.getLibro().getId()).orElseThrow(() -> new PrestamoInvalidoException("Libro no encontrado"));
 
         if(!usuario) throw new PrestamoInvalidoException("No existe el usuario.");
         if(!libro) throw new PrestamoInvalidoException("No existe el libro.");
