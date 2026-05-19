@@ -37,6 +37,7 @@ public class PrestamoService {
         libro.setCantidadDisponible(libro.getCantidadDisponible() - 1);
 
         try{
+            prestamo.setEstado(Estado.ACTIVO);
             prestamo.setId(null);
             return prestamoRepository.save(prestamo);
         } catch (DataIntegrityViolationException e) {
