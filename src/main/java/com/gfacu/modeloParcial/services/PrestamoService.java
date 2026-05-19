@@ -39,6 +39,8 @@ public class PrestamoService {
         try{
             prestamo.setEstado(Estado.ACTIVO);
             prestamo.setId(null);
+            prestamo.setLibro(libro);
+            prestamo.setUsuario(usuario);
             return prestamoRepository.save(prestamo);
         } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("Error en la integridad de datos.");
