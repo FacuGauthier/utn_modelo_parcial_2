@@ -18,6 +18,9 @@ public class Libro {
     private String titulo;
 
     @Column(nullable = false)
+    private String autor;
+
+    @Column(nullable = false)
     private String categoria;
 
     @Column(name = "cantidad_disponible", nullable = false)

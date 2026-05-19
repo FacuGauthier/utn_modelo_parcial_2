@@ -22,7 +22,7 @@ public class LibroController {
         return libroService.listarLibros();
     }
 
-    @GetMapping("/listar/{categoria}")
+    @GetMapping("/categoria/{categoria}")
     public List<Libro> listarLibrosPorCategoria(@PathVariable String categoria) {
         return libroService.listarLibrosPorCategoria(categoria);
     }

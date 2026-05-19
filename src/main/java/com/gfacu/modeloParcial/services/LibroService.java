@@ -52,6 +52,7 @@ public class LibroService {
         libroGuardar.setId(id);
         libroGuardar.setCategoria(libro.getCategoria());
         libroGuardar.setTitulo(libro.getTitulo());
+        libroGuardar.setAutor(libro.getAutor());
         libroGuardar.setCantidadDisponible(libro.getCantidadDisponible());
 
         try{
@@ -71,7 +72,7 @@ public class LibroService {
     }
 
     public List<Libro> listarLibrosPorCategoria(String categoria) {
-        return listarLibros().stream().filter(lib -> lib.getCategoria().equals(categoria)).toList();
+        return listarLibros().stream().filter(lib -> lib.getCategoria().equalsIgnoreCase(categoria)).toList();
     }
 
     public List<Libro> listarLibros() {
@@ -84,11 +85,15 @@ public class LibroService {
             throw new IllegalArgumentException("El titulo es obligatorio.");
         }
 
+        if(libro.getAutor() == null || libro.getAutor().isBlank()) {
+            throw new IllegalArgumentException("El autor es obligatorio.");
+        }
+
         if(libro.getCategoria() == null ||libro.getCategoria().isBlank()) {
             throw new IllegalArgumentException("La categoria es obligatoria.");
         }
 
-        if(libro.getCantidadDisponible() < 0) {
+        if(libro.getCantidadDisponible() == null || libro.getCantidadDisponible() < 0) {
             throw new IllegalArgumentException("La cantidad del libro no puede ser negativa.");
         }
     }
