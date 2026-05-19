@@ -4,6 +4,7 @@ import com.gfacu.modeloParcial.exceptions.PrestamoInvalidoException;
 import com.gfacu.modeloParcial.models.Estado;
 import com.gfacu.modeloParcial.models.Libro;
 import com.gfacu.modeloParcial.models.Prestamo;
+import com.gfacu.modeloParcial.models.Usuario;
 import com.gfacu.modeloParcial.repositories.LibroRepository;
 import com.gfacu.modeloParcial.repositories.PrestamoRepository;
 import com.gfacu.modeloParcial.repositories.UsuarioRepository;
