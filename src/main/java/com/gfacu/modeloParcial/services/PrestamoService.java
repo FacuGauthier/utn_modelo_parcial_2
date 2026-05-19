@@ -30,8 +30,7 @@ public class PrestamoService {
         Usuario usuario = usuarioRepository.findById(prestamo.getUsuario().getId()).orElseThrow(() -> new PrestamoInvalidoException("Usuario no encontrado"));
         Libro libro = libroRepository.findById(prestamo.getLibro().getId()).orElseThrow(() -> new PrestamoInvalidoException("Libro no encontrado"));
 
-        if(!usuario) throw new PrestamoInvalidoException("No existe el usuario.");
-        if(!libro) throw new PrestamoInvalidoException("No existe el libro.");
+        if(libro.getCantidadDisponible() < 1) throw new PrestamoInvalidoException("Sin stock");
 
         if(prestamo.getLibro().getCantidadDisponible() < 1) {
             throw new PrestamoInvalidoException("No hay cantidades suficientes.");
