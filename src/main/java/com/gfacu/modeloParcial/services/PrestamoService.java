@@ -21,6 +21,7 @@ public class PrestamoService {
 
     public PrestamoService(PrestamoRepository prestamoRepository, UsuarioRepository usuarioRepository , LibroRepository libroRepository) {
         this.prestamoRepository = prestamoRepository;
+        this.usuarioRepository = usuarioRepository;
         this.libroRepository = libroRepository;
     }
 
