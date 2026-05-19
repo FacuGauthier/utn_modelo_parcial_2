@@ -53,7 +53,9 @@ public class PrestamoService {
 
         prestamo.setEstado(Estado.FINALIZADO);
 
-        Libro libro = prestamo.getLibro();
+        Libro libro = libroRepository.findById(prestamo.getLibro().getId())
+                .orElseThrow(() -> new PrestamoInvalidoException("Libro no encontrado"));
+
         libro.setCantidadDisponible(libro.getCantidadDisponible()+1);
 
         try{
