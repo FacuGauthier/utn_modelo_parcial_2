@@ -29,6 +29,7 @@ public class LibroService {
         }
     }
 
+    @Transactional
     public void borrarLibro(Long id) {
         if(id == null) {
             throw new IllegalArgumentException("El ID no puede ser nulo.");
