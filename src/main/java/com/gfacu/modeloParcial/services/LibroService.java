@@ -5,6 +5,7 @@ import com.gfacu.modeloParcial.repositories.LibroRepository;
 import com.gfacu.modeloParcial.repositories.PrestamoRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
