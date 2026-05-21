@@ -18,6 +18,7 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     @ManyToOne
