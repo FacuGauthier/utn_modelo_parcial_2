@@ -2,6 +2,7 @@ package com.gfacu.modeloParcial.services;
 
 import com.gfacu.modeloParcial.models.Libro;
 import com.gfacu.modeloParcial.repositories.LibroRepository;
+import com.gfacu.modeloParcial.repositories.PrestamoRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class LibroService {
     private final LibroRepository libroRepository;
+    private final PrestamoRepository prestamoRepository;
 
-    public LibroService(LibroRepository libroRepository) {
+    public LibroService(LibroRepository libroRepository,  PrestamoRepository prestamoRepository) {
         this.libroRepository = libroRepository;
+        this.prestamoRepository = prestamoRepository;
     }
 
     public Libro crearLibro(Libro libro) {
@@ -34,6 +37,7 @@ public class LibroService {
         Libro libroBorrar = buscarPorId(id);
 
         try{
+            prestamoRepository.deleteByLibroId(id);
             libroRepository.delete(libroBorrar);
         } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("Error en la integridad de datos.");

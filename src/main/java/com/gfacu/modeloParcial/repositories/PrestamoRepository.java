@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface PrestamoRepository extends JpaRepository<Prestamo,Long> {
     List<Prestamo> findByUsuarioId(Long idUsuario);
+    void deleteByLibroId(Long idLibro);
 }

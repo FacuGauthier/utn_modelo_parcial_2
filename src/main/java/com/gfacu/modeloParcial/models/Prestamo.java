@@ -25,7 +25,6 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "id_libro", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Libro libro;
 
     @Column(name = "fecha_prestamo", nullable = false)
